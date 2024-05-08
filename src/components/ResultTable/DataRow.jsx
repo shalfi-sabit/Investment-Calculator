@@ -11,16 +11,23 @@ const DataRow = ({
   year,
   totalSavings,
   interestGainInYear,
-  totalInterestGained,
-  totalInvestedCapital,
+  initialInvestment,
+  yearlyContribution,
+  totalContribution,
 }) => {
   return (
     <tr>
-      <td>{formatter.format(year)}</td>
+      <td>{year}</td>
       <td>{formatter.format(totalSavings)}</td>
       <td>{formatter.format(interestGainInYear)}</td>
-      <td>{formatter.format(totalInterestGained)}</td>
-      <td>{formatter.format(totalInvestedCapital)}</td>
+      <td>
+        {formatter.format(
+          +totalSavings - +initialInvestment - +yearlyContribution * +year
+        )}
+      </td>
+      <td>
+        {formatter.format(+initialInvestment + +yearlyContribution * +year)}
+      </td>
     </tr>
   );
 };

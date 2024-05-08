@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Form = ({ setYearlyDataState }) => {
+const Form = ({ setYearlyDataState, userInputState, setUserInputState }) => {
   const calculateHandler = (userInput, event) => {
     event.preventDefault();
     const yearlyData = []; // per-year results
@@ -42,15 +42,11 @@ const Form = ({ setYearlyDataState }) => {
     });
   };
 
-  const [userInputState, setUserInputState] = useState({
-    currentSavings: "",
-    yearlySavings: "",
-    expectedInterest: "",
-    investmentDuration: "",
-  });
-
   return (
-    <form className="form">
+    <form
+      className="form"
+      onSubmit={(event) => calculateHandler(userInputState, event)}
+    >
       <div className="input-group">
         <p>
           <label htmlFor="current-savings">Current Savings ($)</label>
@@ -105,11 +101,7 @@ const Form = ({ setYearlyDataState }) => {
         <button type="reset" className="buttonAlt" onClick={resetInput}>
           Reset
         </button>
-        <button
-          type="submit"
-          className="button"
-          onClick={(event) => calculateHandler(userInputState, event)}
-        >
+        <button type="submit" className="button">
           Calculate
         </button>
       </p>

@@ -1,7 +1,7 @@
 import React from "react";
 import DataRow from "./DataRow";
 
-const ResultTable = ({ yearlyDataState }) => {
+const ResultTable = ({ yearlyDataState, userInputState }) => {
   return (
     <table className="result">
       <thead>
@@ -21,8 +21,8 @@ const ResultTable = ({ yearlyDataState }) => {
               year={year}
               totalSavings={savingsEndOfYear}
               interestGainInYear={yearlyInterest}
-              totalInterestGained={yearlyContribution}
-              totalInvestedCapital={"DUMMY"}
+              yearlyContribution={yearlyContribution}
+              initialInvestment={savingsEndOfYear}
             />
           )
         )}
